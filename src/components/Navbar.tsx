@@ -26,10 +26,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
   const brandColor = "#CFFF24";
 
-  const baseHeaderClasses = "fixed z-50 transition-all duration-300 ease-in-out w-full font-inter";
-  const commonInnerClasses = "w-full lg:w-2/3 mx-auto flex items-center justify-between h-full px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out";
-  const blendedInnerClasses = "py-8 bg-transparent";
-  const scrolledInnerClasses = "top-4 rounded-full shadow-2xl shadow-indigo-500/10 bg-gray-900/90 backdrop-blur-md py-3 px-8 border border-gray-700";
+  const baseHeaderClasses = "fixed z-50 transition-all duration-300 ease-in-out w-full font-inter top-0 flex justify-center";
+  const commonInnerClasses = "w-full lg:w-2/3 relative grid grid-cols-3 items-center h-full px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out py-8";
+  const blendedInnerClasses = "bg-transparent";
+  const scrolledInnerClasses = "rounded-full shadow-2xl shadow-indigo-500/10 bg-gray-900/90 backdrop-blur-md border border-gray-700";
 
   const NavLinks: React.FC<{ links: NavLink[] }> = ({ links }) => (
     <div className="hidden lg:flex space-x-10">
@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   );
 
   return (
-    <header className={`${baseHeaderClasses} top-0`}>
+    <header className={baseHeaderClasses}>
       
       <div 
         className={`
@@ -57,22 +57,26 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       >
         
         {/* LEFT LINKS */}
-        <NavLinks links={navLinks.left} />
+        <div className="justify-self-start">
+          <NavLinks links={navLinks.left} />
+        </div>
 
         {/* CENTER LOGO */}
         <div
-          className="flex-shrink-0 font-extrabold text-2xl tracking-wider cursor-pointer transition duration-300"
-          style={{ color: brandColor }}
+          className="justify-self-center font-extrabold text-2xl tracking-wider cursor-pointer transition duration-300"
+          style={{ color: "#FFFFFF" }}
         >
           TAJJJR
         </div>
 
         {/* RIGHT LINKS */}
-        <NavLinks links={navLinks.right} />
+        <div className="justify-self-end">
+          <NavLinks links={navLinks.right} />
+        </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* MOBILE MENU BUTTON - Positioned absolutely on mobile */}
         <button 
-          className="lg:hidden p-2 transition"
+          className="lg:hidden absolute right-4 sm:right-6 p-2 transition"
           style={{
             background: "transparent",
             border: "none",
