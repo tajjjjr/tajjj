@@ -4,7 +4,7 @@ import { Button } from "./Button";
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
+    <section id="hero" className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
       <BackgroundEffects />
 
       <div className="relative z-20 flex flex-col items-center max-w-5xl mx-auto text-center mt-12 md:mt-0">

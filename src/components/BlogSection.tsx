@@ -33,7 +33,7 @@ const posts = [
 
 export const BlogSection: React.FC = () => {
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 pb-24 md:pb-32">
+    <section id="blog" className="w-full max-w-7xl mx-auto px-6 pb-24 md:pb-32">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 border-t border-white/10 pt-16">
         <div className="max-w-3xl">
