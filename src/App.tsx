@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import { ChevronDown } from 'lucide-react';
+import { BlogSection } from './components/BlogSection';
 
 export default function App() {
   const SCROLL_THRESHOLD = 300;
@@ -20,12 +21,6 @@ export default function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
-
-  const ContentSection = ({ id, title, bgColor }) => (
-    <section id={id} className={`min-h-screen p-16 ${bgColor} flex items-center justify-center text-white`}>
-      <h2 className="text-4xl font-bold">{title} Section</h2>
-    </section>
-  );
 
   return (
     <div className="min-h-screen bg-black font-sans">
@@ -47,13 +42,7 @@ export default function App() {
           <ChevronDown className="w-12 h-12 mx-auto mt-20 animate-bounce text-indigo-400" />
         </div>
       </section>
-
-      <main className="pt-0">
-        <ContentSection id="blog" title="The Blog" bgColor="bg-gray-950" />
-        <ContentSection id="projects" title="Our Projects" bgColor="bg-gray-900" />
-        <ContentSection id="story" title="Our Story" bgColor="bg-gray-950" />
-        <ContentSection id="contact" title="Contact Us" bgColor="bg-gray-900" />
-      </main>
+      <BlogSection />
 
       <style>{`
         .font-inter {
