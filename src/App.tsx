@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Navbar from "./components/Navbar";
-import { BlogSection } from "./components/BlogSection";
+import React, { useState, useEffect, useCallback } from 'react';
+import Navbar from './components/Navbar';
+import { ChevronDown } from 'lucide-react';
+import { BlogSection } from './components/BlogSection';
 import { Hero } from "./components/Hero";
+import { ProjectsSection } from './components/ProjectsSection';
 
 export default function App() {
   const SCROLL_THRESHOLD = 300;
@@ -25,8 +27,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black font-sans">
       <Navbar scrolled={isScrolled} />
-
       <Hero />
+      <ProjectsSection />
       <BlogSection />
 
       <style>{`
