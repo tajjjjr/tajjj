@@ -4,7 +4,7 @@ import { BlogSection } from "./components/BlogSection";
 import { Hero } from "./components/Hero";
 
 export default function App() {
-  const SCROLL_THRESHOLD = 300;
+  const SCROLL_THRESHOLD = 75;
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = useCallback(() => {
