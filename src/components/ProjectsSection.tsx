@@ -74,7 +74,7 @@ export const ProjectsSection: React.FC = () => {
       {/* Header with Navigation */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
         <div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] mb-6">
             <span className="text-[#C7F246]">Recent</span> <span className="text-white">Projects</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl">
