@@ -7,7 +7,8 @@ interface Project {
   category: string;
   description: string;
   icon: React.ReactNode;
-  gradient: string;
+  gradientFrom: string;
+  gradientTo: string;
 }
 
 const projects: Project[] = [
@@ -17,7 +18,8 @@ const projects: Project[] = [
     category: 'High-Frequency Trading',
     description: 'A low-latency execution venue designed for institutional-grade throughput, processing over 1M orders per second with microsecond precision.',
     icon: <Activity size={32} className="text-black" />,
-    gradient: 'from-[#C7F246] to-[#A3D921]' // Lime gradient
+    gradientFrom: '#C7F246',
+    gradientTo: '#A3D921'
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ const projects: Project[] = [
     category: 'Security & Compliance',
     description: 'Multi-signature cold storage solution integrated with real-time on-chain monitoring and automated compliance reporting tools.',
     icon: <Box size={32} className="text-white" />,
-    gradient: 'from-blue-600 to-indigo-700' // Blue gradient
+    gradientFrom: '#2563eb',
+    gradientTo: '#4338ca'
   },
   {
     id: 3,
@@ -33,7 +36,8 @@ const projects: Project[] = [
     category: 'Interoperability',
     description: 'Trustless cross-chain messaging protocol enabling seamless asset transfers between EVM and non-EVM chains without centralized intermediaries.',
     icon: <Layers size={32} className="text-white" />,
-    gradient: 'from-purple-600 to-pink-600' // Purple/Pink gradient
+    gradientFrom: '#C7F246',
+    gradientTo: '#A3D921'
   },
   {
     id: 4,
@@ -41,7 +45,8 @@ const projects: Project[] = [
     category: 'Analytics',
     description: 'Real-time risk management dashboard providing consolidated views of exposure across spot, derivatives, and lending markets.',
     icon: <Zap size={32} className="text-black" />,
-    gradient: 'from-orange-400 to-red-500' // Orange gradient
+    gradientFrom: '#2563eb',
+    gradientTo: '#4338ca'
   },
   {
     id: 5,
@@ -49,11 +54,16 @@ const projects: Project[] = [
     category: 'RWA Infrastructure',
     description: 'End-to-end platform for tokenizing real estate and commodities, featuring automated dividend distribution and secondary market trading.',
     icon: <Globe size={32} className="text-white" />,
-    gradient: 'from-emerald-500 to-teal-700' // Green gradient
+    gradientFrom: '#C7F246',
+    gradientTo: '#A3D921'
   }
 ];
 
-export const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  onViewAll?: () => void;
+}
+
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAll }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -74,7 +84,7 @@ export const ProjectsSection: React.FC = () => {
       {/* Header with Navigation */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
         <div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] mb-6">
             <span className="text-[#C7F246]">Recent</span> <span className="text-white">Projects</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl">
@@ -86,7 +96,7 @@ export const ProjectsSection: React.FC = () => {
         <div className="flex gap-4">
           <button 
             onClick={() => scroll('left')}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#C7F246] hover:text-black transition-all duration-300 group"
             aria-label="Previous project"
           >
             <ArrowLeft size={20} />
@@ -113,11 +123,16 @@ export const ProjectsSection: React.FC = () => {
             className="snap-start min-w-[320px] md:min-w-[400px] lg:min-w-[450px] group relative bg-[#111] border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 flex flex-col"
           >
              {/* Abstract Visual Header */}
-             <div className={`h-48 w-full bg-gradient-to-br ${project.gradient} p-6 relative overflow-hidden`}>
+             <div
+               className="h-48 w-full p-6 relative overflow-hidden"
+               style={{
+                 background: `linear-gradient(to bottom right, ${project.gradientFrom}, ${project.gradientTo})`
+               }}
+             >
                 {/* Decorative Pattern overlay */}
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
                 <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-white/20 blur-3xl rounded-full"></div>
-                
+
                 {/* Icon Badge */}
                 <div className="relative z-10 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl">
                    {project.icon}
@@ -151,6 +166,19 @@ export const ProjectsSection: React.FC = () => {
              </div>
           </div>
         ))}
+
+        {/* View All Card at the end */}
+        <div className="snap-start min-w-[320px] md:min-w-[400px] lg:min-w-[450px] flex items-center justify-center bg-[#111] border border-white/5 rounded-3xl border-dashed hover:border-[#C7F246]/30 transition-colors duration-300">
+          <button 
+            onClick={onViewAll}
+            className="group flex items-center gap-3 bg-[#C7F246] text-black px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 whitespace-nowrap"
+          >
+            View all projects
+            <span className="bg-white/50 p-1 rounded-full group-hover:rotate-45 transition-transform duration-300">
+               <ArrowUpRight size={16} className="text-black" />
+            </span>
+          </button>
+        </div>
       </div>
     </section>
   );
