@@ -9,7 +9,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  Send,
+  Twitter,
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
@@ -47,6 +47,7 @@ const ContactSection: React.FC = () => {
     { name: "Facebook", icon: Facebook, href: "https://facebook.com" },
     { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
     { name: "TikTok", icon: TikTokIcon, href: "https://tiktok.com" },
+    { name: "Twitter", icon: Twitter, href: "https://x.com" },
   ];
 
   const handleChange = (
