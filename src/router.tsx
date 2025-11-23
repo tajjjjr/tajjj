@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BlogSection } from './components/BlogSection';
 import ContactSection from './components/ContactSection';
+import OurStory from './components/OurStory';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/projects',
         element: <AllProjectsPage />,
+      },
+      {
+        path: '/our-story',
+        element: <OurStory />,
       },
     ],
   },
