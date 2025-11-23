@@ -38,7 +38,7 @@ export const BlogSection: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 border-t border-white/10 pt-16">
         <div className="max-w-3xl">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] text-[#C7F246] mb-6">
-            Recent Insights
+            <span className="text-[#C7F246]">Recent</span> <span className="text-white">Insights</span>
           </h2>
           <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
             Expert perspectives on market structure, trading technology, and the future of finance.
