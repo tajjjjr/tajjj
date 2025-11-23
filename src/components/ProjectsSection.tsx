@@ -1,13 +1,10 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import { ProjectCard } from './ProjectCard';
 
-interface ProjectsSectionProps {
-  onViewAll?: () => void;
-}
-
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAll }) => {
+export const ProjectsSection: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const fiveProjects = projects.slice(0, 5);
 
@@ -72,15 +69,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAll }) =
 
         {/* View All Card at the end */}
         <div className="snap-start min-w-[320px] md:min-w-[400px] lg:min-w-[450px] flex items-center justify-center bg-[#111] border border-white/5 rounded-3xl border-dashed hover:border-[#C7F246]/30 transition-colors duration-300">
-          <button 
-            onClick={onViewAll}
+          <Link
+            to="/projects"
             className="group flex items-center gap-3 bg-[#C7F246] text-black px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 whitespace-nowrap"
           >
             View all projects
             <span className="bg-white/50 p-1 rounded-full group-hover:rotate-45 transition-transform duration-300">
                <ArrowUpRight size={16} className="text-black" />
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

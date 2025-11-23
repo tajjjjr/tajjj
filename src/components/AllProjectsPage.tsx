@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Search } from 'lucide-react';
 import { projects as baseProjects, Project } from '../data/projects';
 import { ProjectCard } from './ProjectCard';
 
-interface AllProjectsPageProps {
-  onBack: () => void;
-}
-
-export const AllProjectsPage: React.FC<AllProjectsPageProps> = ({ onBack }) => {
+export const AllProjectsPage: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -73,13 +70,13 @@ export const AllProjectsPage: React.FC<AllProjectsPageProps> = ({ onBack }) => {
       {/* Sticky Header */}
       {/* <header className="sticky top-0 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <button 
-            onClick={onBack}
+          <Link
+            to="/"
             className="flex items-center gap-2 text-gray-400 hover:text-[#C7F246] transition-colors group"
           >
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             <span className="font-medium">Back to Home</span>
-          </button>
+          </Link>
 
           <h1 className="text-lg font-medium hidden md:block">All Projects</h1>
 
