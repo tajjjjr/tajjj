@@ -69,7 +69,7 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-24 border-t border-white/10">
+    <section id="projects" className="w-full max-w-7xl mx-auto px-6 py-12 md:py-24 border-t border-white/10">
       
       {/* Header with Navigation */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">

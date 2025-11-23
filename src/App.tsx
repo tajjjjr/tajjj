@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
-import { ChevronDown } from 'lucide-react';
 import { BlogSection } from './components/BlogSection';
 import { Hero } from "./components/Hero";
 import { ProjectsSection } from './components/ProjectsSection';
+import ContactSection from './components/ContactSection'
 
 export default function App() {
   const SCROLL_THRESHOLD = 75;
@@ -30,6 +30,7 @@ export default function App() {
       <Hero />
       <ProjectsSection />
       <BlogSection />
+      <ContactSection />
 
       <style>{`
         .font-inter {
