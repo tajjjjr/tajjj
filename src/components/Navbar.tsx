@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // --- Navbar Links Data ---
 const navLinks = {
   left: [
     { name: 'Blog', href: '#blog' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Projects', href: '/projects' },
   ],
   right: [
     { name: 'Our Story', href: '#story' },
@@ -34,14 +35,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const NavLinks: React.FC<{ links: NavLink[] }> = ({ links }) => (
     <div className="hidden lg:flex space-x-10">
       {links.map((link) => (
-        <a 
-          key={link.name} 
-          href={link.href} 
+        <Link
+          key={link.name}
+          to={link.href}
           className="text-sm font-medium transition duration-200"
           style={{ color: brandColor }}
         >
           {link.name}
-        </a>
+        </Link>
       ))}
     </div>
   );
@@ -49,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   return (
     <header className={baseHeaderClasses}>
       
-      <div 
+      <div
         className={`
           ${commonInnerClasses}
           ${scrolled ? scrolledInnerClasses : blendedInnerClasses}
@@ -66,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           className="justify-self-center font-extrabold text-2xl tracking-wider cursor-pointer transition duration-300"
           style={{ color: "#FFFFFF" }}
         >
-          TAJJJR
+          <Link to="/">TAJJJR</Link>
         </div>
 
         {/* RIGHT LINKS */}
@@ -75,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
         </div>
 
         {/* MOBILE MENU BUTTON - Positioned absolutely on mobile */}
-        <button 
+        <button
           className="lg:hidden absolute right-4 sm:right-6 p-2 transition"
           style={{
             background: "transparent",
@@ -95,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
         <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-gray-900/95 backdrop-blur-sm p-8 flex flex-col items-center justify-center">
           
           {/* CLOSE ICON */}
-          <button 
+          <button
             className="absolute top-6 right-6 p-2"
             style={{
               background: "transparent",
@@ -111,15 +112,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           
           <div className="space-y-6 text-center">
             {[...navLinks.left, ...navLinks.right].map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="block text-3xl font-bold transition"
                 style={{ color: brandColor }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
