@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { BlogSection } from "./components/BlogSection";
-import { Hero } from "./components/Hero";
-import { ProjectsSection } from "./components/ProjectsSection";
-import ContactSection from "./components/ContactSection";
-import { Footer } from "./components/Footer";
-import OurStory from "./pages/OurStory";
+import React, { useState, useEffect, useCallback } from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { Footer } from './components/Footer';
 
 export default function App() {
   const SCROLL_THRESHOLD = 75;
@@ -30,23 +25,7 @@ export default function App() {
   return (
     <div className="min-h-screen w-full bg-[#050505] text-white overflow-x-hidden selection:bg-[#C7F246] selection:text-black">
       <Navbar scrolled={isScrolled} />
-      <Routes>
-        {/* Home Page */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <ProjectsSection />
-              <BlogSection />
-              <ContactSection />
-            </>
-          }
-        />
-
-        {/* Our Story Page */}
-        <Route path="/our-story" element={<OurStory />} />
-      </Routes>
+      <Outlet />
       <Footer />
     </div>
   );
