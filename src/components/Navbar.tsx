@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 // --- Navbar Links Data ---
 const navLinks = {
   left: [
-    { name: 'Blog', href: '#blog' },
-    { name: 'Projects', href: '/projects' },
+    { name: "Blog", href: "#blog" },
+    { name: "Projects", href: "/projects" },
   ],
   right: [
-    { name: 'Our Story', href: '#story' },
-    { name: 'Contact Us', href: '#contact' },
-  ]
+    { name: "Our Story", href: "#story" },
+    { name: "Contact Us", href: "#contact" },
+  ],
 };
 
 interface NavbarProps {
@@ -27,10 +27,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
   const brandColor = "#CFFF24";
 
-  const baseHeaderClasses = "fixed z-50 transition-all duration-300 ease-in-out w-full font-inter top-0 flex justify-center";
-  const commonInnerClasses = "w-full lg:w-2/3 relative grid grid-cols-3 items-center h-full px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out py-8";
+  const baseHeaderClasses =
+    "fixed z-50 transition-all duration-300 ease-in-out w-full font-inter top-0 flex justify-center";
+  const commonInnerClasses =
+    "w-full lg:w-2/3 relative grid grid-cols-3 items-center h-full px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out py-8";
   const blendedInnerClasses = "bg-transparent";
-  const scrolledInnerClasses = "rounded-full shadow-2xl shadow-indigo-500/10 bg-gray-900/90 backdrop-blur-md border border-gray-700";
+  const scrolledInnerClasses =
+    "rounded-full shadow-2xl shadow-indigo-500/10 bg-gray-900/90 backdrop-blur-md border border-gray-700";
 
   const NavLinks: React.FC<{ links: NavLink[] }> = ({ links }) => (
     <div className="hidden lg:flex space-x-10">
@@ -56,7 +59,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           ${scrolled ? scrolledInnerClasses : blendedInnerClasses}
         `}
       >
-        
         {/* LEFT LINKS */}
         <div className="justify-self-start">
           <NavLinks links={navLinks.left} />
@@ -83,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             border: "none",
             color: brandColor,
             fontSize: "1.75rem",
-            lineHeight: 1
+            lineHeight: 1,
           }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -94,7 +96,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       {/* MOBILE OVERLAY */}
       {isMenuOpen && (
         <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-gray-900/95 backdrop-blur-sm p-8 flex flex-col items-center justify-center">
-          
           {/* CLOSE ICON */}
           <button
             className="absolute top-6 right-6 p-2"
@@ -103,13 +104,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               border: "none",
               color: brandColor,
               fontSize: "2.25rem",
-              lineHeight: 1
+              lineHeight: 1,
             }}
             onClick={() => setIsMenuOpen(false)}
           >
             ✕
           </button>
-          
+
           <div className="space-y-6 text-center">
             {[...navLinks.left, ...navLinks.right].map((link) => (
               <Link

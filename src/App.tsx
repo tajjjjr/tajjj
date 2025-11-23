@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import { Footer } from './components/Footer';
 
 export default function App() {
   const SCROLL_THRESHOLD = 75;
@@ -25,6 +26,7 @@ export default function App() {
     <div className="min-h-screen w-full bg-[#050505] text-white overflow-x-hidden selection:bg-[#C7F246] selection:text-black">
       <Navbar scrolled={isScrolled} />
       <Outlet />
+      <Footer />
     </div>
   );
 }
