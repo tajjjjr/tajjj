@@ -5,7 +5,7 @@ import { Button } from "./Button";
 export const Footer: React.FC = () => {
   return (
     <footer className="relative w-full bg-dark-bg overflow-hidden pt-20 pb-10">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-0">
         {/* Call to Action Section (Replacing Email Form) */}
         <div className="flex flex-col items-center justify-center text-center mb-32 space-y-8">
           <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white drop-shadow-2xl">
