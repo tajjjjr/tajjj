@@ -25,18 +25,12 @@ export default function App() {
   }, [handleScroll]);
 
   return (
-    <div className="min-h-screen bg-black font-sans">
+    <div className="min-h-screen w-full bg-[#050505] text-white overflow-x-hidden selection:bg-[#C7F246] selection:text-black">
       <Navbar scrolled={isScrolled} />
       <Hero />
       <ProjectsSection />
       <BlogSection />
       <ContactSection />
-
-      <style>{`
-        .font-inter {
-          font-family: 'Inter', sans-serif;
-        }
-      `}</style>
     </div>
   );
 }
