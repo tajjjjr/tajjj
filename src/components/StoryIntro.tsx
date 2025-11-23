@@ -22,7 +22,9 @@ const StoryIntro: React.FC = () => {
           </div>
 
           <div className="flex-shrink-0">
+            <a href="/#contact" className="inline-block">
             <Button variant="primary" label="Start a Conversation" />
+            </a>
           </div>
         </div>
       </div>
