@@ -4,6 +4,7 @@ import { BlogSection } from './components/BlogSection';
 import { Hero } from "./components/Hero";
 import { ProjectsSection } from './components/ProjectsSection';
 import ContactSection from './components/ContactSection'
+import { Footer } from './components/Footer';
 
 export default function App() {
   const SCROLL_THRESHOLD = 75;
@@ -31,6 +32,7 @@ export default function App() {
       <ProjectsSection />
       <BlogSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 }
