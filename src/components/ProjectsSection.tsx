@@ -41,7 +41,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAll }) =
         <div className="flex gap-4">
           <button 
             onClick={() => scroll('left')}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#C7F246] hover:text-black transition-all duration-300 group"
             aria-label="Previous project"
           >
             <ArrowLeft size={20} />
