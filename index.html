@@ -25,6 +25,7 @@
               float: "float 6s ease-in-out infinite",
               twinkle: "twinkle 4s ease-in-out infinite",
               beam: "beam 8s ease-in-out infinite",
+              scroll: "scroll 40s linear infinite",
             },
             keyframes: {
               float: {
@@ -38,6 +39,10 @@
               beam: {
                 "0%, 100%": { opacity: "0.4" },
                 "50%": { opacity: "0.6" },
+              },
+              scroll: {
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(-50%)" },
               },
             },
           },

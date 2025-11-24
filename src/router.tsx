@@ -7,6 +7,7 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { BlogSection } from './components/BlogSection';
 import ContactSection from './components/ContactSection';
 import { SinglePostPage } from './components/SinglePostPage';
+import OurStory from './components/OurStory';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       //   path: '/blog/:postId',
       //   element: <SinglePostPage />,
       // }
+      {
+        path: '/our-story',
+        element: <OurStory />,
+      },
     ],
   },
 ]);

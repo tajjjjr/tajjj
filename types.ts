@@ -19,3 +19,19 @@ export interface ContactFormData {
   subject: string;
   message: string;
 }
+
+export interface StoryStage {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  imageUrl: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  title: string;
+  imageUrl: string;
+}
