@@ -6,6 +6,7 @@ import { Hero } from './components/Hero';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BlogSection } from './components/BlogSection';
 import ContactSection from './components/ContactSection';
+import { SinglePostPage } from './components/SinglePostPage';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <AllPostsPage onBack={() => window.history.back()} />,
-      }
+        element: <AllPostsPage />,
+      },
+      // {
+      //   path: '/blog/:postId',
+      //   element: <SinglePostPage />,
+      // }
     ],
   },
 ]);
