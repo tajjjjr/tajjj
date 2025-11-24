@@ -33,10 +33,10 @@ const router = createBrowserRouter([
         path: '/blog',
         element: <AllPostsPage />,
       },
-      // {
-      //   path: '/blog/:postId',
-      //   element: <SinglePostPage />,
-      // }
+      {
+        path: '/blog/:postId',
+        element: <SinglePostPage />,
+      },
       {
         path: '/our-story',
         element: <OurStory />,
