@@ -1,18 +1,20 @@
 
 import React from 'react';
 import { ArrowLeft, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface BlogHeaderProps {
-  onBack: () => void;
   title: string;
 }
 
-export const BlogHeader: React.FC<BlogHeaderProps> = ({ onBack, title }) => {
+export const BlogHeader: React.FC<BlogHeaderProps> = ({ title }) => {
+  const navigate = useNavigate();
+
   return (
     <header className="sticky top-0 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <button 
-          onClick={onBack}
+          onClick={() => navigate('/')}
           className="flex items-center gap-2 text-gray-400 hover:text-[#C7F246] transition-colors group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
