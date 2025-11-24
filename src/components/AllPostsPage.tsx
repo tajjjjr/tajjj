@@ -4,6 +4,7 @@ import { BlogHeader } from './BlogHeader';
 import { PostCard } from './PostCard';
 import { BlogIntro } from './BlogIntro';
 import { InfiniteScrollLoader } from './InfiniteScrollLoader';
+import { useNavigate } from 'react-router-dom';
 
 // --- Mock Data Generator ---
 const CATEGORIES = ['Market Structure', 'DeFi', 'Engineering', 'Compliance', 'Macro', 'Product'];
@@ -42,12 +43,7 @@ const generatePosts = (page: number, limit: number): Post[] => {
   });
 };
 
-interface AllPostsPageProps {
-  onBack: () => void;
-  onPostClick?: (id: number) => void;
-}
-
-export const AllPostsPage: React.FC<AllPostsPageProps> = ({ onBack, onPostClick = () => {} }) => {
+export const AllPostsPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -102,7 +98,7 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = ({ onBack, onPostClick 
 
   return (
     <div className="min-h-screen bg-[#050505] text-white animate-in fade-in duration-500">
-      {/* <BlogHeader onBack={onBack} title="All Insights" /> */}
+      {/* <BlogHeader title="All Insights" /> */}
 
       <main className="max-w-7xl mx-auto px-6 py-12 mt-30">
         <BlogIntro 
@@ -113,7 +109,7 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = ({ onBack, onPostClick 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} onPostClick={onPostClick} />
+            <PostCard key={post.id} post={post} />
           ))}
         </div>
 
