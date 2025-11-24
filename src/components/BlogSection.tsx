@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Clock, Tag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const posts = [
   {
@@ -46,12 +47,15 @@ export const BlogSection: React.FC = () => {
         </div>
         
         <div className="mb-2">
-          <button className="group flex items-center gap-3 bg-[#C7F246] text-black px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 whitespace-nowrap">
+          <Link
+            to="/blog"
+            className="group flex items-center gap-3 bg-[#C7F246] text-black px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 whitespace-nowrap"
+          >
             View all articles
             <span className="bg-white/50 p-1 rounded-full group-hover:rotate-45 transition-transform duration-300">
                <ArrowUpRight size={16} className="text-black" />
             </span>
-          </button>
+          </Link>
         </div>
       </div>
 
