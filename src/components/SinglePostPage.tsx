@@ -21,12 +21,12 @@ export const SinglePostPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="min-h-screen bg-[#050505] text-white animate-in fade-in slide-in-from-bottom-4 duration-500 mt-30">
       
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 h-1 bg-[#C7F246] z-[60]" style={{ width: `${scrollProgress * 100}%` }} />
 
-      <PostNavigation />
+      {/* <PostNavigation /> */}
 
       <article className="max-w-4xl mx-auto px-6 py-12">
         
