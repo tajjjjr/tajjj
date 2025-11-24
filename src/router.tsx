@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import { AllProjectsPage } from './components/AllProjectsPage';
+import { AllPostsPage } from './components/AllPostsPage';
 import { Hero } from './components/Hero';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BlogSection } from './components/BlogSection';
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: '/projects',
         element: <AllProjectsPage />,
       },
+      {
+        path: '/blog',
+        element: <AllPostsPage onBack={() => window.history.back()} />,
+      }
     ],
   },
 ]);
