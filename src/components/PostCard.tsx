@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowUpRight, Clock, Tag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Post {
   id: number;
@@ -14,13 +15,14 @@ interface Post {
 
 interface PostCardProps {
   post: Post;
-  onPostClick: (id: number) => void;
 }
 
-export const PostCard: React.FC<PostCardProps> = ({ post, onPostClick }) => {
+export const PostCard: React.FC<PostCardProps> = ({ post }) => {
+  const navigate = useNavigate();
+
   return (
     <article 
-      onClick={() => onPostClick(post.id)}
+      onClick={() => navigate(`/blog/${post.id}`)}
       className="group cursor-pointer flex flex-col h-full bg-[#0A0A0A] border border-white/5 rounded-2xl p-4 hover:border-white/10 transition-all hover:-translate-y-1 duration-300"
     >
       {/* Thumbnail */}
