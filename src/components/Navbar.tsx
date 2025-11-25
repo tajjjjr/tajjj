@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // --- Navbar Links Data ---
-const navLinks = {
+const getNavLinks = (isLoggedIn: boolean) => ({
   left: [
     { name: "Blog", href: "#blog" },
     { name: "Projects", href: "/projects" },
@@ -10,11 +10,15 @@ const navLinks = {
   right: [
     { name: "Our Story", href: "/our-story" },
     { name: "Contact Us", href: "/#contact" },
+    { name: isLoggedIn ? 'Dashboard' : 'Login', href: isLoggedIn ? '#dashboard' : '#login' },
   ],
-};
+});
 
 interface NavbarProps {
   scrolled: boolean;
+  onLoginClick?: () => void;
+  onHomeClick?: () => void;
+  isLoggedIn?: boolean;
 }
 
 interface NavLink {
@@ -22,10 +26,11 @@ interface NavLink {
   href: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
+const Navbar: React.FC<NavbarProps> = ({ scrolled, onLoginClick, onHomeClick, isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const brandColor = "#CFFF24";
+  const navLinks = getNavLinks(isLoggedIn || false);
 
   const baseHeaderClasses =
     "fixed z-50 transition-all duration-300 ease-in-out w-full font-inter top-0 flex justify-center";
@@ -38,14 +43,35 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const NavLinks: React.FC<{ links: NavLink[] }> = ({ links }) => (
     <div className="hidden lg:flex space-x-10">
       {links.map((link) => (
-        <Link
-          key={link.name}
-          to={link.href}
-          className="text-sm font-medium transition duration-200"
-          style={{ color: brandColor }}
-        >
-          {link.name}
-        </Link>
+        (link.name === 'Projects' || link.name === 'Our Story') ? (
+          <Link
+            key={link.name}
+            to={link.href}
+            className="text-sm font-medium transition duration-200 cursor-pointer"
+            style={{ color: brandColor }}
+          >
+            {link.name}
+          </Link>
+        ) : (link.name === 'Login' || link.name === 'Dashboard') ? (
+          <a 
+            key={link.name} 
+            href={link.href} 
+            onClick={(e) => { e.preventDefault(); onLoginClick?.(); }}
+            className="text-sm font-medium transition duration-200 cursor-pointer"
+            style={{ color: brandColor }}
+          >
+            {link.name}
+          </a>
+        ) : (
+          <a
+            key={link.name}
+            href={link.href}
+            className="text-sm font-medium transition duration-200"
+            style={{ color: brandColor }}
+          >
+            {link.name}
+          </a>
+        )
       ))}
     </div>
   );
@@ -65,11 +91,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
         </div>
 
         {/* CENTER LOGO */}
-        <div
-          className="justify-self-center font-extrabold text-2xl tracking-wider cursor-pointer transition duration-300"
-          style={{ color: "#FFFFFF" }}
-        >
-          <Link to="/">TAJJJR</Link>
+        <div className="justify-self-center">
+          <Link 
+            to="/"
+            className="font-extrabold text-2xl tracking-wider cursor-pointer transition duration-300"
+            style={{ color: "#FFFFFF" }}
+            onClick={() => onHomeClick?.()}
+          >
+            TAJJJR
+          </Link>
         </div>
 
         {/* RIGHT LINKS */}
@@ -113,15 +143,41 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
           <div className="space-y-6 text-center">
             {[...navLinks.left, ...navLinks.right].map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="block text-3xl font-bold transition"
-                style={{ color: brandColor }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
+              (link.name === 'Projects' || link.name === 'Our Story') ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="block text-3xl font-bold transition cursor-pointer"
+                  style={{ color: brandColor }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ) : (link.name === 'Login' || link.name === 'Dashboard') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onLoginClick?.();
+                    setIsMenuOpen(false);
+                  }}
+                  className="block text-3xl font-bold transition cursor-pointer"
+                  style={{ color: brandColor }}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block text-3xl font-bold transition"
+                  style={{ color: brandColor }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
         </div>
