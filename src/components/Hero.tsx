@@ -40,9 +40,9 @@ export const Hero: React.FC = () => {
           {/* Button Group */}
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <a href="#contact" className="inline-block">
-              <Button variant="primary" label="Get Started" />
+              <Button variant="primary" label="Book a Session" />
             </a>
-            <a href="#story" className="inline-block">
+            <a href="/our-story" className="inline-block">
               <Button variant="secondary" label="Our Story" />
             </a>
           </div>
