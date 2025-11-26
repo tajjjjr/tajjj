@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 // --- Navbar Links Data ---
 const navLinks = {
   left: [
-    { name: "Blog", href: "#blog" },
+    { name: "Blog", href: "/blog" },
     { name: "Projects", href: "/projects" },
   ],
   right: [
     { name: "Our Story", href: "/our-story" },
-    { name: "Contact Us", href: "/#contact" },
+    { name: "Contact Us", href: "/contact" },
   ],
 };
 
