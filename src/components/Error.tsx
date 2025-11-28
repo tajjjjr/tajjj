@@ -47,7 +47,7 @@ const Error: React.FC = () => {
         </h2>
 
         <p className="font-sans text-gray-400 text-lg md:text-xl max-w-lg mb-12 font-medium tracking-wide">
-          {error.message}
+          {error.title}
         </p>
 
         <Button
