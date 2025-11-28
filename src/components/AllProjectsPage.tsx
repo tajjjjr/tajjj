@@ -9,35 +9,36 @@ export const AllProjectsPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  
+
   // Intersection Observer Ref
   const observerTarget = useRef<HTMLDivElement>(null);
 
   const loadMoreProjects = useCallback(async () => {
     if (loading || !hasMore) return;
-    
+
     setLoading(true);
-    
+
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 800));
-    
+
     const limit = 9;
     const start = (page - 1) * limit;
-    const newProjects = baseProjects.slice(start, start + limit);
-    
-    if (newProjects.length === 0) {
-        setHasMore(false);
-        setLoading(false);
-        return;
-    }
 
-    setProjects(prev => [...prev, ...newProjects]);
+    // For infinite scroll with limited mock data, cycle through projects
+    const newProjects = Array.from({ length: limit }, (_, i) => {
+      const projectIndex = (start + i) % baseProjects.length;
+      return baseProjects[projectIndex];
+    });
+
+    setProjects(prev => {
+      const updatedProjects = [...prev, ...newProjects];
+      if (updatedProjects.length >= 60) {
+        setHasMore(false);
+      }
+      return updatedProjects;
+    });
     setPage(prev => prev + 1);
 
-    if ((page * limit) >= baseProjects.length) {
-        setHasMore(false);
-    }
-    
     setLoading(false);
   }, [page, loading, hasMore]);
 
@@ -95,17 +96,17 @@ export const AllProjectsPage: React.FC = () => {
 
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-medium text-[#C7F246] mb-4">Our Work</h2>
-            <p className="text-gray-400 max-w-2xl text-lg">
-              A curated collection of our technical achievements in building the financial infrastructure of tomorrow.
-            </p>
+          <h2 className="text-4xl md:text-5xl font-medium text-[#C7F246] mb-4">Our Work</h2>
+          <p className="text-gray-400 max-w-2xl text-lg">
+            A curated collection of our technical achievements in building the financial infrastructure of tomorrow.
+          </p>
         </div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <ProjectCard
-              key={project.id}
+              key={`${project.id}-${crypto.randomUUID()}`}
               {...project}
               className="hover:-translate-y-1"
             />
@@ -114,16 +115,16 @@ export const AllProjectsPage: React.FC = () => {
 
         {/* Loading / End State */}
         <div ref={observerTarget} className="h-32 flex flex-col items-center justify-center mt-12 gap-4">
-           {loading && (
-             <div className="flex items-center gap-2 text-[#C7F246]">
-                <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce [animation-delay:-0.3s]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce [animation-delay:-0.15s]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce"></div>
-             </div>
-           )}
-           {!hasMore && !loading && (
-             <p className="text-gray-600 text-sm font-mono uppercase tracking-widest">End of content</p>
-           )}
+          {loading && (
+            <div className="flex items-center gap-2 text-[#C7F246]">
+              <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce [animation-delay:-0.3s]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce [animation-delay:-0.15s]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#C7F246] animate-bounce"></div>
+            </div>
+          )}
+          {!hasMore && !loading && (
+            <p className="text-gray-600 text-sm font-mono uppercase tracking-widest">End of content</p>
+          )}
         </div>
       </main>
     </div>
