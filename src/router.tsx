@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         path: '/our-story',
         element: <OurStory />,
       },
+      {
+        path: '/contact',
+        element: <ContactSection />,
+      },
     ],
   },
 ]);
