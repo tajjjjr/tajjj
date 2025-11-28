@@ -8,11 +8,13 @@ import { BlogSection } from './components/BlogSection';
 import ContactSection from './components/ContactSection';
 import { SinglePostPage } from './components/SinglePostPage';
 import OurStory from './components/OurStory';
+import Error from './components/Error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',

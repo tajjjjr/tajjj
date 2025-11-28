@@ -118,7 +118,7 @@ const ContactSection: React.FC = () => {
             </h4>
             <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight">
               Let's Start a <br />
-              Conversation.
+              <span className="text-[#CFFF24]">Conversation</span>.
             </h2>
             <p className="text-gray-400 text-lg max-w-md pt-4 leading-relaxed">
               Have a project in mind or just want to say hello? We are always
